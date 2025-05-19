@@ -1,0 +1,30 @@
+
+	Gnn_Project_Chariot		utilisation du chariot mobile
+
+1 - Il faut modifier le fichier "OLedAffi_MyLogo.h" pour ajouter
+    l'image bitmap du logo du groupe entre les deux lignes "{"  et "}" 
+	et enlever le commentaire de la ligne "//AOLED_DisplayImage((char*)Gnn_myLogo);"
+	dans la fonction "void setup()" dans le fichier "Gnn_Project_xxx.ino"
+
+2 - Il faut modifier le fichier GSensor_MicroMob.ino pour faire la lecture du capteur 
+	et appliquer l'algo de l'APP Signal pour mesurer la puissance et la frequence du signal reçu.
+	Dans ce fichier, il faut lire et suivre les commentaires.
+	La carte TIVA possede 32 KB de RAM. DOnc, il faut limiter les buffers des échantillons
+	à 2500/3000 max. 
+	Avec cette limitation, il faut limiter la fréquence d'echantillonnage à 10 KHz.
+
+3 - Vu la faible capacité memeoire de la TIVA, utiliser la FFT donnerai des resultats trop
+	approximatifs avec un delta de frequence trop élevé.
+	Sur ce, la recherche de la fréquence se fera par l'autocorrélation ou le filtrage.
+
+4 - Programme de test du chariot mobile
+	Dans le fichier "Gnn_Project_Chariot.ino" il y a une fonction Test_Moteurs(); 
+	Il faut utiliser cette fonction pour regler le point d'arret des moteurs.
+	Un appui sur le bouton poussoir arrete les moteurs. 
+	Ensuite, en tournant le potentiometre, on choisit le mouvement du chariot : avancer,
+	reculer, tourner à gauche, à droite
+	Si le potar est tourné à fond à gauche (lecture de 0), les moteurs doivent s'arreter.
+	Si ce n'est pas le cas, il faut regler les moteurs avec un tournevis jusqu'à l'arret.
+
+5 -	Après le réglage des moteurs, il faut écrire la fonction "Mouvement_Chariot(void)" pour 
+    faire votre application.
